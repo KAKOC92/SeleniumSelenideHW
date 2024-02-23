@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class AppOrderTestNegativeTest {
@@ -71,6 +72,16 @@ class AppOrderTestNegativeTest {
         driver.findElement(By.cssSelector("button.button")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub" )).getText();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", text);
+        Thread.sleep(5000);
+    }
+
+    @Test
+    void SendingFormTestWithOutCheckBox() throws InterruptedException {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Алексей Бабкин");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79102436802");
+        driver.findElement(By.cssSelector("button.button")).click();
+        assertTrue (driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid" )).isDisplayed());
         Thread.sleep(5000);
     }
 }
