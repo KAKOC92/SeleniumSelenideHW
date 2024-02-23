@@ -25,8 +25,6 @@ jobs:
         run: java -jar ./artifacts/app-order.jar &
 
       - name: Build with Gradle
-        gradlew test -Dselenide.headless=true
-
         # Запускаем автотесты
         # Для проектов на базе Selenide необходимо добавить параметр для запуска браузера
         # в headless режиме -Dselenide.headless=true, параметр --info должен остаться
