@@ -16,18 +16,18 @@ jobs:
           distribution: 'adopt'
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
       - name: Start SUT
         # Запускаем SUT,
         # имя файла SUT будет отличаться в каждой задаче.
         # & означает, что в фоновом режиме не блокируем терминал для запуска тестов,
         # обязательно должен быть для запуска SUT в CI
         run: java -jar ./artifacts/app-order.jar &
+
       - name: Build with Gradle
+        gradlew test -Dselenide.headless=true
+
         # Запускаем автотесты
         # Для проектов на базе Selenide необходимо добавить параметр для запуска браузера
         # в headless режиме -Dselenide.headless=true, параметр --info должен остаться
-<<<<<<< HEAD
-        run: ./gradlew test --info
-=======
-        run: ./gradlew test --info  
->>>>>>> ca9dcebc0676c42a704698f0ae9f14795c8b5c8f
+
