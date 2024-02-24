@@ -41,6 +41,5 @@ class AppOrderTest {
         driver.findElement(By.cssSelector("button.button")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
         assertEquals("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text);
-        Thread.sleep(5000);
     }
 }
